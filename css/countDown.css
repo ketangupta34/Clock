@@ -1,0 +1,107 @@
+.countDown {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.TimeInputField {
+  outline: none;
+  background: none;
+  border: none;
+  width: 70px;
+  font-size: 60px;
+  color: var(--colorBlue);
+}
+
+.time {
+  border: 1px solid white;
+  margin-top: var(--topMargin);
+  height: 350px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  border: 5px solid var(--background);
+  border-radius: 50%;
+  box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+    inset 0 -15px 15px rgba(255, 255, 255, 0.05), 0 15px 15px rgba(0, 0, 0, 0.3),
+    inset 0 15px 15px rgba(0, 0, 0, 0.3);
+}
+
+.timeHeading {
+  opacity: 0.2;
+}
+
+.addMinute {
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--textColor);
+  opacity: 0.4;
+  background-color: var(--background);
+  border: none;
+  padding: 3px 20px;
+  transition: all 0.2s;
+}
+
+.addMinute:hover {
+  opacity: 0.7;
+}
+
+.time2 {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.time2 h2 {
+  margin: 10px;
+}
+.timePiece {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.countButtons {
+  position: absolute;
+  bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonClassCDB {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonCDB {
+  color: var(--textColor);
+  background: none;
+  border: none;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  opacity: 0.4;
+  transition: all 0.2s;
+}
+
+.buttonCDB:hover {
+  opacity: 0.9;
+}
+
+#addMinuteCDB {
+  font-size: 25px;
+}

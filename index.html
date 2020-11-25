@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/stopWatch.css" />
+    <link rel="stylesheet" href="css/timeClock.css" />
+    <link rel="stylesheet" href="css/countDown.css" />
+
+    <script src="script/stopWatch.js"></script>
+    <script src="script/timeClock.js"></script>
+    <script src="script/countdown.js"></script>
+  </head>
+
+  <body>
+    <nav class="navBar">
+      <ul>
+        <li><a href="#timeclock">TimeClock</a></li>
+        <li><a href="#stopwatch" style="margin: 0 50px">StopWatch</a></li>
+        <li><a href="#countdown">CountDown</a></li>
+      </ul>
+    </nav>
+
+    <div class="overCD" style="display: none">
+      <div class="message">
+        <h1>Count Down Over</h1>
+        <button class="exitOverCD" onclick="partyModeOff()">EXIT</button>
+      </div>
+    </div>
+
+    <div class="mainDiv">
+      <div id="timeclock" class="timeClock">
+        <div class="clock">
+          <div class="hour">
+            <div class="hr" id="hr"></div>
+          </div>
+          <div class="min">
+            <div class="mn" id="mn"></div>
+          </div>
+          <div class="sec">
+            <div class="sc" id="sc"></div>
+          </div>
+        </div>
+        <div class="dateAndTime">
+          <h2 id="date">fri 16 Nov, 2020</h2>
+          <h3 id="time">11:37:15 PM</h3>
+        </div>
+      </div>
+
+      <div id="stopwatch" class="stopWatch">
+        <div class="timer">
+          <h1 class="displayTimer">00:00.00</h1>
+        </div>
+
+        <div class="lapTimerDiv" style="visibility: hidden">
+          <h2>Lap Time</h2>
+          <div class="lapTime"></div>
+        </div>
+
+        <div class="buttons">
+          <button
+            id="resetButton"
+            class="buttonCDB"
+            style="display: none"
+            onclick="resetButton()"
+          >
+            <svg
+              width="30px"
+              height="30px"
+              viewBox="0 0 16 16"
+              class="bi bi-arrow-clockwise"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
+              />
+              <path
+                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"
+              />
+            </svg>
+          </button>
+
+          <button id="startButton" class="buttonCSS" onclick="startButton()">
+            <svg
+              width="30px"
+              height="30px"
+              viewBox="0 0 16 16"
+              class="bi bi-caret-right-fill"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+              />
+            </svg>
+          </button>
+
+          <button
+            id="stopButton"
+            class="buttonCSS"
+            style="display: none"
+            onclick="stopButton()"
+          >
+            <svg
+              width="40px"
+              height="40px"
+              viewBox="0 0 16 16"
+              class="bi bi-pause-fill"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"
+              />
+            </svg>
+          </button>
+
+          <button
+            id="lapButton"
+            class="buttonCDB"
+            style="display: none"
+            onclick="lapButton()"
+          >
+            <svg
+              width="30px"
+              height="30px"
+              viewBox="0 0 16 16"
+              class="bi bi-flag"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21.294 21.294 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21.317 21.317 0 0 0 14 7.655V1.222z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="countdown" class="countDown">
+        <div class="timeInput">
+          <div class="time">
+            <h2 class="timeHeading">Enter Time</h2>
+
+            <div class="time2">
+              <div class="timePiece">
+                <input
+                  type="text"
+                  id="hrInputField"
+                  class="TimeInputField"
+                  value="00"
+                  maxlength="2"
+                />
+                <p style="font-size: 17px">hours</p>
+              </div>
+              <h2>:</h2>
+              <div class="timePiece">
+                <input
+                  type="text"
+                  id="mnInputField"
+                  class="TimeInputField"
+                  value="00"
+                  maxlength="2"
+                />
+                <p style="font-size: 17px">minutes</p>
+              </div>
+              <h2>:</h2>
+              <div class="timePiece">
+                <input
+                  type="text"
+                  id="scInputField"
+                  class="TimeInputField"
+                  value="00"
+                  maxlength="2"
+                />
+                <p style="font-size: 17px">seconds</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="countButtons">
+          <button
+            onclick="deleteCDB()"
+            id="deleteCDB"
+            class="buttonCDB"
+            style="display: none"
+          >
+            <svg
+              width="30px"
+              height="30px"
+              viewBox="0 0 16 16"
+              class="bi bi-trash-fill"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"
+              />
+            </svg>
+          </button>
+
+          <button onclick="startCDB()" id="startCDB" class="buttonCSS">
+            <svg
+              width="30px"
+              height="30px"
+              viewBox="0 0 16 16"
+              class="bi bi-caret-right-fill"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+              />
+            </svg>
+          </button>
+
+          <button
+            onclick="stopCDB()"
+            id="stopCDB"
+            class="buttonCSS"
+            style="display: none"
+          >
+            <svg
+              width="40px"
+              height="40px"
+              viewBox="0 0 16 16"
+              class="bi bi-pause-fill"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"
+              />
+            </svg>
+          </button>
+
+          <button
+            onclick="addMinuteCDB()"
+            id="addMinuteCDB"
+            class="buttonCDB"
+            style="display: none"
+          >
+            +1
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <h3>Developed by Ketan Gupta</h3>
+
+      <a target="_blank" href="https://www.linkedin.com/in/ketangupta34/">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="150"
+          height="150"
+          fill="currentColor"
+          viewBox="0 0 100 100"
+        >
+          <path
+            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+          />
+        </svg>
+      </a>
+    </footer>
+  </body>
+</html>

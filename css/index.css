@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  --colorBlue: #5e98f5;
+  --colorPink: #ff105e;
+  --background: #252525;
+  --textColor: aliceblue;
+  --borderColor: #454545;
+
+  --topMargin: 180px;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--textColor);
+  font-family: cursive;
+  overflow: hidden;
+}
+
+.navBar {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  border-bottom: 5px solid var(--borderColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navBar ul {
+  min-width: 45%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navBar ul li {
+  cursor: pointer;
+  font-size: 25px;
+  line-height: 28px;
+  display: inline;
+}
+
+.navBar ul li a {
+  text-decoration: none;
+  color: var(--textColor);
+  opacity: 0.8;
+  transition: all 0.25s ease-in-out;
+}
+
+.navBar ul li a:hover {
+  opacity: 1;
+  font-size: 27px;
+  color: var(--colorBlue);
+}
+
+.mainDiv {
+  display: flex;
+  width: 300vw;
+}
+
+.buttonCSS {
+  cursor: pointer;
+  color: var(--textColor);
+  background-color: var(--colorBlue);
+  width: 70px;
+  height: 70px;
+  margin: 10px;
+  border-radius: 50%;
+  border: none;
+}
+
+.footer {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+}
+
+footer h3 {
+  color: #999999;
+  opacity: 0.45;
+}
+
+footer a {
+  opacity: 0.5;
+  color: #999999;
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+  transition: all 0.2s;
+}
+
+footer a:hover {
+  opacity: 1;
+}
+
+.overCD {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--colorBlue);
+  background-color: var(--textColor);
+  border-radius: 10px;
+  height: 25%;
+  width: 40%;
+}
+
+.exitOverCD {
+  margin-top: 20px;
+  background-color: var(--background);
+  font-size: 18px;
+  color: var(--textColor);
+  border-radius: 5px;
+  border: 2px solid black;
+  padding: 7px 50px;
+  transition: all 0.2s;
+}
+
+.exitOverCD:hover {
+  transform: scale(1.1);
+}
